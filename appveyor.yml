@@ -65,6 +65,7 @@ for:
     build_script:
       - ps: |
           node script/yarn.js install --frozen-lockfile
+      - cd ..\..          
       - ps: $env:RUN_GCLIENT_SYNC="false"
       - ps: |
           $depshash_baked = Get-Content .\src\.depshash -Raw
