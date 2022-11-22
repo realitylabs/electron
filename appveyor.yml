@@ -40,12 +40,15 @@ environment:
   matrix:
 
     - job_name: Build
+      job_group: TEST GROUP NAME
     - job_name: Test
       job_depends_on: Build
-
-configuration:
-  - Debug
-  - Release  
+      job_group: TEST GROUP NAME
+      
+platform:
+  - x86
+  - x64
+  - arm64
 
 clone_folder: C:\projects\src\electron
 
@@ -61,10 +64,22 @@ for:
 
     build_script:
       - ps: |
-          if ($env:JK_TEST -eq 'test') {
-            echo 'YES VAR WORKS $env:JK_TEST'
+          node script/yarn.js install --frozen-lockfile
+      - ps: $env:RUN_GCLIENT_SYNC="false"
+      - ps: |
+          $depshash_baked = Get-Content .\src\.depshash -Raw
+          echo "BAKED DEPS IS: $depshash_baked"
+      - ps: cd src\electron
+      - ps: node script\generate-deps-hash.js
+      - ps: |
+          $depshash = Get-Content .\.depshash -Raw
+          echo "DEPS HASH IS: $depshash"
+      - ps: cd ..\..
+      - ps: >-
+          if ($depshash_baked -ne $depshash) {
+            echo "VALUES ARE NOT EQUAL SO GCLIENT SYNC IS NEEDED"
           } else {
-            echo 'NO VAR WORKS: $env:JK_TEST'
+            echo "VALUES ARE EQUAL SO skip GCLIENT SYNC"
           }
           
   - matrix:
