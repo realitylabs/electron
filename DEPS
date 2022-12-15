@@ -10,7 +10,7 @@ vars = {
   'squirrel.mac_version':
     '0e5d146ba13101a1302d59ea6e6e0b3cace4ae38',
   'mediaengine_version':
-    '2d4ff6ae3a7c52c5740d25d3d5c70f8add2d2ecb',
+    '6abdafa8c0e9f749065a3f58a1a376aa3137e40b',
   'opencore-amr_version':
     '20ad9c0c6cf059e6614f88ebdeeef708b6a43c27',
   'vo-amrwbenc_version':
