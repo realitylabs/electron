@@ -9,6 +9,12 @@ vars = {
     '16fa32231e2ccd89d2804b3f765319128b20c4ac',
   'squirrel.mac_version':
     '0e5d146ba13101a1302d59ea6e6e0b3cace4ae38',
+  'mediaengine_version':
+    '2d4ff6ae3a7c52c5740d25d3d5c70f8add2d2ecb',
+  'opencore-amr_version':
+    '20ad9c0c6cf059e6614f88ebdeeef708b6a43c27',
+  'vo-amrwbenc_version':
+    '61fee92733d83aea2fd756bb1bfabe3e9ac49e20',
 
   'pyyaml_version': '3.12',
 
@@ -17,6 +23,8 @@ vars = {
   'nodejs_git': 'https://github.com/nodejs',
   'yaml_git': 'https://github.com/yaml',
   'squirrel_git': 'https://github.com/Squirrel',
+  'mediaengine_git': 'git@gitlab.com:telepo/apps/lib/lib-mediaengine.git',
+  'external_git': 'git@gitlab.com:telepo/apps/external',
 
   # KEEP IN SYNC WITH utils.js FILE
   'yarn_version': '1.15.2',
@@ -32,6 +40,8 @@ vars = {
   'checkout_node': True,
   'checkout_nan': True,
   'checkout_pgo_profiles': True,
+  'checkout_mediaengine': True,
+  'checkout_external': True,
 
   # It's only needed to parse the native tests configurations.
   'checkout_pyyaml': False,
@@ -93,6 +103,18 @@ deps = {
   'src/third_party/squirrel.mac/vendor/Mantle': {
     'url': 'https://github.com/Mantle/Mantle.git@78d3966b3c331292ea29ec38661b25df0a245948',
     'condition': 'process_deps',
+  },
+  'src/third_party/webrtc/mediaengine': {
+    'url': (Var("mediaengine_git")) + '@' + Var("mediaengine_version"),
+    'condition': 'checkout_mediaengine and process_deps',
+  },
+  'src/third_party/opencore-amr': {
+    'url': (Var("external_git")) + '/external-opencore-amr.git@' + (Var("opencore-amr_version")),
+    'condition': 'checkout_external and process_deps',
+  },
+  'src/third_party/vo-amrwbenc': {
+    'url': (Var("external_git")) + '/external-opencore-amr-vo-amrwbenc.git@' + (Var("vo-amrwbenc_version")),
+    'condition': 'checkout_external and process_deps',
   }
 }
 
