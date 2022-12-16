@@ -8,10 +8,10 @@ This patch ensures that we assign the following payload types for our external c
 114: AMR
 18: G729
 
-diff --git a/third_party/webrtc/media/engine/payload_type_mapper.cc b/third_party/webrtc/media/engine/payload_type_mapper.cc
+diff --git a/media/engine/payload_type_mapper.cc b/media/engine/payload_type_mapper.cc
 index c63d1d72212b086aedab07169602982d66102cb0..7cae6a8bdaad0fb863235acc7be450d368eb52c8 100644
---- a/third_party/webrtc/media/engine/payload_type_mapper.cc
-+++ b/third_party/webrtc/media/engine/payload_type_mapper.cc
+--- a/media/engine/payload_type_mapper.cc
++++ b/media/engine/payload_type_mapper.cc
 @@ -57,7 +57,9 @@ PayloadTypeMapper::PayloadTypeMapper()
             {{"G728", 8000, 1}, 15},
             {{"DVI4", 11025, 1}, 16},
@@ -20,6 +20,6 @@ index c63d1d72212b086aedab07169602982d66102cb0..7cae6a8bdaad0fb863235acc7be450d3
 +           {{"G729", 8000, 1, {{"annexb", "no"}}}, 18},
 +           {{"AMR", 8000, 1, {{"mode-change-capability", "2"}, {"max-red", "0"}}}, 114},
 +           {{"AMR-WB", 16000, 1, {{"mode-change-capability", "2"}, {"max-red", "0"}}}, 115},
-
+ 
             // Payload type assignments currently used by WebRTC.
             // Includes data to reduce collisions (and thus reassignments)
