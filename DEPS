@@ -10,11 +10,11 @@ vars = {
   'squirrel.mac_version':
     '0e5d146ba13101a1302d59ea6e6e0b3cace4ae38',
   'mediaengine_version':
-    '88ed8e75e1a6b5a7c05ba5086302053a394043f3',
+    '44667492e31b100c1e7ad1b40b513a07bcbaa624',
   'opencore-amr_version':
-    '6042e49fe23d10b5ccec7c049bf0e2949dbff8b0',
+    '349006f7439fb4d13a914b6ef121f04564058275',
   'vo-amrwbenc_version':
-    'f33a2cd8fb06e7bbad5337f9974f19a0193f0f8f',
+    '2b44e396afd67a3d4b43004ed91e175e3d53699e',
 
   'pyyaml_version': '3.12',
 
