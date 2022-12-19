@@ -12,7 +12,7 @@ index 0165a9bd17c9166389c9f0492cff01b488153ac5..1eefc8d13d2c6ca774db006cdf603022
 @@ -22,6 +22,13 @@
  #include "third_party/webrtc/api/audio_codecs/opus/audio_encoder_multi_channel_opus.h"
  #include "third_party/webrtc/api/audio_codecs/opus/audio_encoder_opus.h"
-
+ 
 +#include "third_party/webrtc/mediaengine/codecs/g729/audio_decoder_g729.h"
 +#include "third_party/webrtc/mediaengine/codecs/g729/audio_encoder_g729.h"
 +#include "third_party/webrtc/mediaengine/codecs/amr/audio_decoder_amr.h"
@@ -21,7 +21,7 @@ index 0165a9bd17c9166389c9f0492cff01b488153ac5..1eefc8d13d2c6ca774db006cdf603022
 +#include "third_party/webrtc/mediaengine/codecs/amr/audio_encoder_amrwb.h"
 +
  namespace blink {
-
+ 
  namespace {
 @@ -74,7 +81,10 @@ rtc::scoped_refptr<webrtc::AudioEncoderFactory>
  CreateWebrtcAudioEncoderFactory() {

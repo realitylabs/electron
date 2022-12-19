@@ -9,12 +9,8 @@ vars = {
     '16fa32231e2ccd89d2804b3f765319128b20c4ac',
   'squirrel.mac_version':
     '0e5d146ba13101a1302d59ea6e6e0b3cace4ae38',
-  'mediaengine_version':
-    '44667492e31b100c1e7ad1b40b513a07bcbaa624',
-  'opencore-amr_version':
-    '349006f7439fb4d13a914b6ef121f04564058275',
-  'vo-amrwbenc_version':
-    '2b44e396afd67a3d4b43004ed91e175e3d53699e',
+  'codecs_version':
+    '3b9d745694e99be2afacd442b454dcef68f3a3a4',
 
   'pyyaml_version': '3.12',
 
@@ -23,8 +19,7 @@ vars = {
   'nodejs_git': 'https://github.com/nodejs',
   'yaml_git': 'https://github.com/yaml',
   'squirrel_git': 'https://github.com/Squirrel',
-  'mediaengine_git': 'git@gitlab.com:telepo/apps/lib/lib-mediaengine.git',
-  'external_git': 'git@gitlab.com:telepo/apps/external',
+  'codecs_git': 'git@gitlab.com:telepo/apps/lib/lib-codecs.git',
 
   # KEEP IN SYNC WITH utils.js FILE
   'yarn_version': '1.15.2',
@@ -40,8 +35,7 @@ vars = {
   'checkout_node': True,
   'checkout_nan': True,
   'checkout_pgo_profiles': True,
-  'checkout_mediaengine': True,
-  'checkout_external': True,
+  'checkout_codecs': True,
 
   # It's only needed to parse the native tests configurations.
   'checkout_pyyaml': False,
@@ -104,18 +98,10 @@ deps = {
     'url': 'https://github.com/Mantle/Mantle.git@78d3966b3c331292ea29ec38661b25df0a245948',
     'condition': 'process_deps',
   },
-  'src/third_party/webrtc/mediaengine': {
-    'url': (Var("mediaengine_git")) + '@' + Var("mediaengine_version"),
-    'condition': 'checkout_mediaengine and process_deps',
+  'src/third_party/webrtc/mediaengine/codecs': {
+    'url': (Var("codecs_git")) + '@' + Var("codecs_version"),
+    'condition': 'checkout_codecs and process_deps',
   },
-  'src/third_party/opencore-amr': {
-    'url': (Var("external_git")) + '/external-opencore-amr.git@' + (Var("opencore-amr_version")),
-    'condition': 'checkout_external and process_deps',
-  },
-  'src/third_party/vo-amrwbenc': {
-    'url': (Var("external_git")) + '/external-opencore-amr-vo-amrwbenc.git@' + (Var("vo-amrwbenc_version")),
-    'condition': 'checkout_external and process_deps',
-  }
 }
 
 pre_deps_hooks = [
@@ -172,4 +158,5 @@ hooks = [
 recursedeps = [
   'src',
   'src/third_party/squirrel.mac',
+  'src/third_party/webrtc/mediaengine/codecs',
 ]

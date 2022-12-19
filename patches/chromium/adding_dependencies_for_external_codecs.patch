@@ -6,15 +6,14 @@ Subject: Adding dependencies for external codecs
 This patch adds our external codecs (AMR-WB/NB and G.729) as dependencies to WebRTC.
 
 diff --git a/third_party/webrtc_overrides/BUILD.gn b/third_party/webrtc_overrides/BUILD.gn
-index 70010439af41f56e20db6b32f4158b64cef1e0bb..8c20776f006e5b149d888393059daef7230e7f6f 100644
+index 70010439af41f56e20db6b32f4158b64cef1e0bb..fe5aa19b7e946ae1bc457a51315d2bd9dccc62a0 100644
 --- a/third_party/webrtc_overrides/BUILD.gn
 +++ b/third_party/webrtc_overrides/BUILD.gn
-@@ -115,6 +115,8 @@ webrtc_public_deps = [
+@@ -115,6 +115,7 @@ webrtc_public_deps = [
    "//third_party/webrtc/stats:rtc_stats",
    "//third_party/webrtc/stats:rtc_stats_test_utils",
    "//third_party/webrtc/system_wrappers",
-+  "//third_party/webrtc/mediaengine:amr",
-+  "//third_party/webrtc/mediaengine:g729",
++  "//third_party/webrtc/mediaengine/codecs:all",
  ]
  if (defined(rtc_exclude_system_time) && rtc_exclude_system_time) {
    webrtc_public_deps += [ ":system_time" ]
